@@ -225,10 +225,41 @@ body[data-mode="student"] .sidebar {
 }
 
 .brand-logo {
+  position: relative;
+  display: grid;
+  place-items: center;
   width: 46px;
   height: 46px;
   border-radius: 10px;
+  background: #101815;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.brand-logo::before {
+  content: "";
+  position: absolute;
+  inset: 9px 12px 8px;
+  clip-path: polygon(50% 0, 100% 100%, 73% 100%, 61% 70%, 38% 70%, 27% 100%, 0 100%);
+  background: #f7fbf8;
+}
+
+.brand-logo::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 8px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.brand-logo span {
+  position: relative;
+  z-index: 1;
+  color: transparent;
+  font-size: 0;
 }
 
 .brand strong,
