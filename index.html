@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AtlasFit AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegacao principal">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <div>
+            <strong>AtlasFit AI</strong>
+            <span>Personal autonomo</span>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="dashboard" type="button" aria-label="Painel">
+            <span data-icon="layout-dashboard"></span>
+            <span>Painel</span>
+          </button>
+          <button class="nav-item" data-view="planner" type="button" aria-label="Gerador de plano">
+            <span data-icon="sparkles"></span>
+            <span>Plano IA</span>
+          </button>
+          <button class="nav-item" data-view="workout" type="button" aria-label="Treino">
+            <span data-icon="dumbbell"></span>
+            <span>Treino</span>
+          </button>
+          <button class="nav-item" data-view="clients" type="button" aria-label="Clientes">
+            <span data-icon="users"></span>
+            <span>Clientes</span>
+          </button>
+          <button class="nav-item" data-view="business" type="button" aria-label="Venda">
+            <span data-icon="credit-card"></span>
+            <span>Venda</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-card">
+          <span class="pill">Modo comercial</span>
+          <p>Planos, mensagens e acompanhamento prontos para vender como consultoria digital.</p>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <span class="eyebrow">Coach autonomo</span>
+            <h1>Operacao diaria do personal digital</h1>
+          </div>
+          <div class="top-actions">
+            <button class="icon-button" id="resetDemo" type="button" aria-label="Reiniciar demo" title="Reiniciar demo">
+              <span data-icon="rotate-ccw"></span>
+            </button>
+            <button class="primary-button" id="generateQuick" type="button">
+              <span data-icon="zap"></span>
+              Gerar plano
+            </button>
+          </div>
+        </header>
+
+        <section class="view active" id="dashboard">
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span class="metric-label">Aderencia</span>
+              <strong id="adherenceMetric">86%</strong>
+              <small>7 dias analisados</small>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">Proxima decisao</span>
+              <strong id="decisionMetric">Carga</strong>
+              <small>Ajuste automatico hoje</small>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">Receita simulada</span>
+              <strong id="revenueMetric">R$ 3.582</strong>
+              <small>27 alunos ativos</small>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Hoje</span>
+                  <h2>Agenda inteligente</h2>
+                </div>
+                <button class="ghost-button" id="copyMessage" type="button">
+                  <span data-icon="copy"></span>
+                  Copiar mensagem
+                </button>
+              </div>
+              <div class="timeline" id="timeline"></div>
+            </section>
+
+            <section class="panel accent-panel">
+              <div class="coach-orb">
+                <div class="pulse-ring"></div>
+                <span data-icon="activity"></span>
+              </div>
+              <h2 id="coachTitle">Seu aluno precisa de ajuste fino</h2>
+              <p id="coachInsight">A IA detectou boa frequencia, mas fadiga moderada no treino de pernas. Reduza 8% no volume de quadriceps e mantenha progressao no supino.</p>
+              <button class="secondary-button" id="applyInsight" type="button">
+                <span data-icon="check"></span>
+                Aplicar ajuste
+              </button>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="planner">
+          <form class="planner-grid" id="planForm">
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Anamnese</span>
+                  <h2>Dados do aluno</h2>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <label>
+                  Nome
+                  <input id="studentName" type="text" value="Marina Costa" autocomplete="name" />
+                </label>
+                <label>
+                  Idade
+                  <input id="age" type="number" min="12" max="90" value="32" />
+                </label>
+                <label>
+                  Peso
+                  <input id="weight" type="number" min="30" max="250" value="68" />
+                </label>
+                <label>
+                  Altura
+                  <input id="height" type="number" min="120" max="230" value="166" />
+                </label>
+                <label>
+                  Sexo
+                  <select id="sex">
+                    <option value="feminino" selected>Feminino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="nao informado">Nao informar</option>
+                  </select>
+                </label>
+                <label>
+                  Objetivo
+                  <select id="goal">
+                    <option value="emagrecimento">Emagrecimento</option>
+                    <option value="hipertrofia" selected>Hipertrofia</option>
+                    <option value="condicionamento">Condicionamento</option>
+                    <option value="recomposicao">Recomposicao corporal</option>
+                  </select>
+                </label>
+                <label>
+                  Nivel
+                  <select id="level">
+                    <option value="iniciante">Iniciante</option>
+                    <option value="intermediario" selected>Intermediario</option>
+                    <option value="avancado">Avancado</option>
+                  </select>
+                </label>
+                <label>
+                  Dias por semana
+                  <input id="days" type="number" min="2" max="6" value="4" />
+                </label>
+                <label>
+                  Minutos por treino
+                  <input id="sessionDuration" type="number" min="25" max="120" value="55" />
+                </label>
+                <label>
+                  Equipamento
+                  <select id="equipment">
+                    <option value="academia" selected>Academia completa</option>
+                    <option value="casa">Casa</option>
+                    <option value="halteres">Halteres e banco</option>
+                  </select>
+                </label>
+                <label>
+                  Restricoes
+                  <input id="limitations" type="text" value="joelho sensivel" />
+                </label>
+                <label>
+                  Lesoes historicas
+                  <input id="injuries" type="text" value="tendinite patelar leve em 2024" />
+                </label>
+                <label>
+                  Saude/medicamentos
+                  <input id="medical" type="text" value="sem medicamentos, pressao normal" />
+                </label>
+                <label>
+                  Preferencias
+                  <input id="preferences" type="text" value="prefere maquinas e evita corrida" />
+                </label>
+                <label>
+                  Rotina
+                  <input id="schedule" type="text" value="treina segunda, terca, quinta e sabado" />
+                </label>
+                <label class="span-2">
+                  Observacoes de nutricao
+                  <textarea id="nutritionNotes" rows="3">Dificuldade em bater proteina no cafe da manha. Come fora no almoco durante a semana.</textarea>
+                </label>
+              </div>
+
+              <div class="slider-row">
+                <label for="intensity">Intensidade inicial</label>
+                <input id="intensity" type="range" min="1" max="10" value="7" />
+                <output id="intensityValue">7</output>
+              </div>
+
+              <button class="primary-button wide" type="submit">
+                <span data-icon="wand-sparkles"></span>
+                Criar plano com IA
+              </button>
+            </section>
+
+            <section class="panel result-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Entrega ao aluno</span>
+                  <h2>Plano gerado</h2>
+                </div>
+                <span class="status-chip" id="aiStatus">Demo local</span>
+                <button class="icon-button" id="exportPlan" type="button" aria-label="Exportar plano" title="Exportar plano">
+                  <span data-icon="download"></span>
+                </button>
+              </div>
+              <div id="planOutput" class="plan-output"></div>
+            </section>
+          </form>
+        </section>
+
+        <section class="view" id="workout">
+          <div class="workout-layout">
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Sessao guiada</span>
+                  <h2 id="workoutTitle">Inferiores tecnico</h2>
+                </div>
+                <span class="status-chip" id="sessionStatus">Em andamento</span>
+              </div>
+              <div class="exercise-list" id="exerciseList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Check-in</span>
+                  <h2>Ajuste automatico</h2>
+                </div>
+              </div>
+              <div class="checkin-stack">
+                <label>
+                  Energia
+                  <input id="energy" type="range" min="1" max="10" value="6" />
+                </label>
+                <label>
+                  Sono
+                  <input id="sleep" type="range" min="1" max="10" value="7" />
+                </label>
+                <label>
+                  Dor muscular
+                  <input id="soreness" type="range" min="1" max="10" value="4" />
+                </label>
+                <button class="secondary-button wide" id="runAdjustment" type="button">
+                  <span data-icon="refresh-cw"></span>
+                  Recalcular treino
+                </button>
+                <div class="adjustment-box" id="adjustmentBox"></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="clients">
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Carteira</span>
+                <h2>Alunos acompanhados pela IA</h2>
+              </div>
+              <button class="ghost-button" id="addClient" type="button">
+                <span data-icon="user-plus"></span>
+                Novo aluno
+              </button>
+            </div>
+            <div class="client-table" id="clientTable"></div>
+          </section>
+        </section>
+
+        <section class="view" id="business">
+          <div class="business-grid">
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Oferta</span>
+                  <h2>Pacotes vendaveis</h2>
+                </div>
+              </div>
+              <div class="pricing-grid">
+                <article class="price-card">
+                  <span>Start</span>
+                  <strong>R$ 97</strong>
+                  <p>Plano mensal com treino, check-in semanal e ajuste automatico.</p>
+                </article>
+                <article class="price-card featured">
+                  <span>Pro</span>
+                  <strong>R$ 197</strong>
+                  <p>Treino, nutricao orientativa, chat assicrono e relatorios.</p>
+                </article>
+                <article class="price-card">
+                  <span>Studio</span>
+                  <strong>R$ 497</strong>
+                  <p>Gestao de ate 8 alunos para personal, box ou academia boutique.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="eyebrow">Conversao</span>
+                  <h2>Mensagem de venda</h2>
+                </div>
+                <button class="ghost-button" id="copyOffer" type="button">
+                  <span data-icon="copy"></span>
+                  Copiar
+                </button>
+              </div>
+              <textarea id="offerText" rows="10">Oi! Eu criei uma consultoria com IA que monta seu treino, acompanha seus check-ins e ajusta carga/volume toda semana. Voce recebe um plano claro, acompanhamento no celular e evolucao mensuravel sem depender de horario fixo. Posso te mandar uma avaliacao inicial gratuita?</textarea>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
