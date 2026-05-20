@@ -185,8 +185,8 @@ async function createPlanWithAi() {
   } catch (error) {
     state.plan = fallback;
     renderPlan(state.plan);
-    status.textContent = "Demo local";
-    showToast(`Usei demo local: ${error.message}`);
+    status.textContent = "IA indisponivel";
+    showToast(`IA indisponivel: ${error.message}`);
   } finally {
     $("#planOutput").classList.remove("loading");
   }

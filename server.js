@@ -83,7 +83,8 @@ async function routeApi(req, res) {
     }
     sendJson(res, 200, { mode: "openai", model, plan });
   } catch (error) {
-    sendJson(res, 500, { error: error.message });
+    const status = error.message.toLowerCase().includes("quota") ? 402 : 500;
+    sendJson(res, status, { error: error.message });
   }
 }
 
