@@ -94,9 +94,12 @@ body[data-mode="student"] .sidebar {
   display: flex;
   flex: 1;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  max-width: 760px;
+  max-width: 900px;
+  margin: 0 auto;
   padding: 56px 0 24px;
+  text-align: center;
 }
 
 .landing-kicker {
@@ -130,6 +133,7 @@ body[data-mode="student"] .sidebar {
 .landing-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
   margin-top: 12px;
 }
@@ -168,6 +172,7 @@ body[data-mode="student"] .sidebar {
 .landing-proof {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   margin-top: 32px;
 }
