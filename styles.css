@@ -63,6 +63,7 @@ body[data-mode="student"] .sidebar {
 
 .public-landing {
   min-height: 100vh;
+  overflow: hidden;
   background:
     linear-gradient(90deg, rgba(12, 20, 16, 0.88), rgba(12, 20, 16, 0.58), rgba(12, 20, 16, 0.18)),
     url("https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1800&q=82") center / cover;
@@ -72,11 +73,13 @@ body[data-mode="student"] .sidebar {
 .landing-overlay {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  padding: 24px clamp(18px, 5vw, 72px) 48px;
+  height: 100vh;
+  min-height: 560px;
+  padding: 16px clamp(16px, 4vw, 52px) 18px;
 }
 
 .landing-nav {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -92,42 +95,43 @@ body[data-mode="student"] .sidebar {
 
 .landing-content {
   display: flex;
-  flex: 1;
+  flex: 1 1 auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
-  padding: 56px 0 24px;
+  padding: 12px 0 0;
   text-align: center;
 }
 
 .landing-kicker {
   width: fit-content;
-  margin-bottom: 18px;
-  padding: 8px 12px;
+  margin-bottom: 10px;
+  padding: 6px 10px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
   color: #eaf6ef;
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
 .landing-content h1 {
-  max-width: 720px;
-  margin-bottom: 18px;
+  max-width: 780px;
+  margin-bottom: 10px;
   color: #ffffff;
-  font-size: clamp(2.6rem, 7vw, 5.8rem);
-  line-height: 0.96;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.98;
 }
 
 .landing-content p {
-  max-width: 620px;
+  max-width: 600px;
   color: #e0ebe5;
-  font-size: clamp(1rem, 2vw, 1.22rem);
-  line-height: 1.6;
+  font-size: clamp(0.92rem, 1.25vw, 1.02rem);
+  line-height: 1.38;
+  margin-bottom: 0;
 }
 
 .landing-actions {
@@ -135,13 +139,13 @@ body[data-mode="student"] .sidebar {
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .landing-cta,
 .whatsapp-button,
 .ghost-light-button {
-  min-height: 48px;
+  min-height: 40px;
 }
 
 .whatsapp-button,
@@ -174,14 +178,15 @@ body[data-mode="student"] .sidebar {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-top: 32px;
+  margin-top: 14px;
 }
 
 .landing-proof span {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  padding: 0 14px;
+  min-height: 34px;
+  padding: 0 10px;
+  font-size: 0.88rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.1);
@@ -830,6 +835,45 @@ svg {
   flex: 0 0 auto;
 }
 
+@media (max-height: 680px) {
+  .landing-overlay {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .landing-content h1 {
+    font-size: clamp(1.8rem, 4.6vw, 3.4rem);
+  }
+
+  .landing-content p {
+    max-width: 560px;
+  }
+
+  .landing-proof {
+    display: none;
+  }
+}
+
+@media (max-height: 560px) {
+  .landing-kicker {
+    display: none;
+  }
+
+  .landing-content h1 {
+    font-size: clamp(1.6rem, 4vw, 3rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .landing-content h1 {
+    font-size: 1.55rem;
+  }
+
+  .landing-content p {
+    font-size: 0.82rem;
+  }
+}
+
 @media (max-width: 980px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -870,6 +914,64 @@ svg {
   .main,
   .sidebar {
     padding: 16px;
+  }
+
+  .landing-overlay {
+    min-height: 600px;
+    padding: 12px 12px 14px;
+  }
+
+  .landing-nav {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .landing-login {
+    gap: 8px;
+  }
+
+  .landing-login .ghost-light-button {
+    min-height: 36px;
+    padding: 0 10px;
+    font-size: 0.78rem;
+  }
+
+  .landing-content {
+    padding-top: 10px;
+  }
+
+  .landing-kicker {
+    margin-bottom: 8px;
+  }
+
+  .landing-content h1 {
+    max-width: 360px;
+    font-size: 1.78rem;
+    line-height: 1.02;
+  }
+
+  .landing-content p {
+    max-width: 360px;
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
+  .landing-actions {
+    width: 100%;
+  }
+
+  .landing-actions .primary-button,
+  .landing-actions .whatsapp-button {
+    flex: 1 1 220px;
+  }
+
+  .landing-proof {
+    margin-top: 10px;
+  }
+
+  .landing-proof span {
+    min-height: 30px;
+    font-size: 0.78rem;
   }
 
   .topbar,
