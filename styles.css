@@ -977,6 +977,12 @@ input[type="range"] {
   color: #b93d28;
 }
 
+.danger-button {
+  border-color: #ffd2c8;
+  background: #fff1ed;
+  color: #b93d28;
+}
+
 .risk-high {
   background: #fff1ed;
   color: #b93d28;

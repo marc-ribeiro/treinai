@@ -1,9 +1,9 @@
-const CACHE_NAME = "treinai-v1";
+const CACHE_NAME = "treinai-v2";
 const ASSETS = [
   "/",
   "/index.html",
-  "/styles.css",
-  "/app.js",
+  "/styles.css?v=2026-05-20-2",
+  "/app.js?v=2026-05-20-2",
   "/manifest.webmanifest",
   "/favicon.svg",
   "/logo.svg",

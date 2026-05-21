@@ -799,8 +799,9 @@ function renderClients() {
             <span data-icon="file-check"></span>
             Dossie
           </button>
-          <button class="icon-button delete-client" type="button" data-id="${client.id}" aria-label="Excluir aluno" title="Excluir aluno">
+          <button class="ghost-button danger-button delete-client" type="button" data-id="${client.id}" aria-label="Excluir aluno" title="Excluir aluno">
             <span data-icon="trash-2"></span>
+            Excluir
           </button>
         </div>
       </article>
