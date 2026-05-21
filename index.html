@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AtlasFit AI</title>
+    <title>TreinAI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -18,18 +18,18 @@
               <span>A</span>
             </div>
             <div>
-              <strong>AtlasFit AI</strong>
+              <strong>TreinAI</strong>
               <span>Consultoria fitness com IA</span>
             </div>
           </div>
           <div class="landing-login">
             <button class="ghost-light-button" id="openPanel" type="button">
               <span data-icon="layout-dashboard"></span>
-              Entrar como admin
+              Area admin
             </button>
             <button class="ghost-light-button" id="openStudent" type="button">
               <span data-icon="user"></span>
-              Entrar como aluno
+              Area aluno
             </button>
           </div>
         </header>
@@ -43,7 +43,7 @@
               <span data-icon="clipboard-list"></span>
               Comecar avaliacao
             </button>
-            <a class="whatsapp-button" id="whatsappLead" href="https://wa.me/?text=Oi%21%20Quero%20fazer%20minha%20avaliacao%20no%20AtlasFit%20AI." target="_blank" rel="noreferrer">
+            <a class="whatsapp-button" id="whatsappLead" href="https://wa.me/?text=Oi%21%20Quero%20fazer%20minha%20avaliacao%20no%20TreinAI." target="_blank" rel="noreferrer">
               <span data-icon="message-circle"></span>
               Chamar no WhatsApp
             </a>
@@ -53,7 +53,25 @@
             <span><strong>24/7</strong> ajustes</span>
             <span><strong>R$ 97</strong> fundador</span>
           </div>
-          <p class="demo-login-note">Demo: admin@atlasfit.ai / admin123 | marina@atlasfit.ai / aluno123</p>
+          <form class="login-panel is-hidden" id="loginPanel">
+            <div class="login-heading">
+              <strong id="loginTitle">Entrar</strong>
+              <span id="loginHint">Use seu email e senha.</span>
+            </div>
+            <label>
+              Email
+              <input id="loginEmail" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              Senha
+              <input id="loginPassword" type="password" autocomplete="current-password" required />
+            </label>
+            <button class="primary-button wide" type="submit">
+              <span data-icon="log-in"></span>
+              Entrar
+            </button>
+            <p class="demo-login-note">Demo admin: admin@treinai.app / admin123<br />Demo aluno: marina@treinai.app / aluno123</p>
+          </form>
         </div>
       </div>
     </section>
@@ -65,8 +83,8 @@
             <span>A</span>
           </div>
           <div>
-            <strong>AtlasFit AI</strong>
-            <span>Personal autonomo</span>
+              <strong>TreinAI</strong>
+              <span>Personal autonomo</span>
           </div>
         </div>
 
@@ -110,7 +128,7 @@
       <main class="main">
         <header class="topbar">
           <div>
-            <span class="eyebrow">Coach autonomo</span>
+            <span class="eyebrow">TreinAI</span>
             <h1 id="topTitle">Operacao diaria do personal digital</h1>
           </div>
           <div class="top-actions">

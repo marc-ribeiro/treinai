@@ -1,4 +1,4 @@
-# AtlasFit AI
+# TreinAI
 
 Personal trainer autonomo com avaliacao inicial completa, geracao de plano por IA, treino guiado, check-in e oferta comercial.
 
@@ -42,7 +42,7 @@ Sem `OPENAI_API_KEY`, o app continua funcionando com o motor demo local.
 6. Configure:
 
 ```text
-Name: atlasfit-ai
+Name: treinai
 Runtime: Node
 Build Command: npm install
 Start Command: npm start
@@ -60,7 +60,7 @@ OPENAI_MODEL=gpt-4.1-mini
 Quando terminar, o Render vai gerar uma URL publica parecida com:
 
 ```text
-https://atlasfit-ai.onrender.com
+https://treinai.onrender.com
 ```
 
 O arquivo `render.yaml` tambem permite criar o servico como Blueprint no Render.

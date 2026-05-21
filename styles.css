@@ -204,6 +204,34 @@ body[data-mode="student"] .sidebar {
   font-size: 0.8rem;
 }
 
+.login-panel {
+  display: grid;
+  width: min(420px, 100%);
+  gap: 12px;
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(16, 24, 21, 0.82);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
+  text-align: left;
+}
+
+.login-heading strong,
+.login-heading span {
+  display: block;
+}
+
+.login-heading span {
+  margin-top: 4px;
+  color: #cddbd3;
+  font-size: 0.88rem;
+}
+
+.login-panel label {
+  color: #e8f3ec;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;

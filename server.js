@@ -44,8 +44,8 @@ function publicUser(user) {
 }
 
 function seedDb() {
-  const admin = createUser("u_admin", "Marc Ribeiro", "admin@atlasfit.ai", "admin123", "admin");
-  const marina = createUser("u_marina", "Marina Costa", "marina@atlasfit.ai", "aluno123", "student");
+  const admin = createUser("u_admin", "Marc Ribeiro", "admin@treinai.app", "admin123", "admin");
+  const marina = createUser("u_marina", "Marina Costa", "marina@treinai.app", "aluno123", "student");
   marina.clientId = 1;
 
   return {
@@ -194,7 +194,12 @@ async function routeLogin(req, res) {
 
   const { email, password } = JSON.parse(await readBody(req));
   const db = await readDb();
-  const user = db.users.find((item) => item.email.toLowerCase() === String(email || "").toLowerCase());
+  const normalizedEmail = String(email || "").toLowerCase();
+  const legacyEmail = normalizedEmail.replace("@treinai.app", "@atlasfit.ai");
+  const user = db.users.find((item) => {
+    const itemEmail = item.email.toLowerCase();
+    return itemEmail === normalizedEmail || itemEmail === legacyEmail;
+  });
 
   if (!user || hashPassword(password || "", user.salt) !== user.passwordHash) {
     sendJson(res, 401, { error: "Email ou senha invalidos." });
@@ -356,6 +361,6 @@ const server = http.createServer((req, res) => {
 
 server.listen(port, host, () => {
   const localUrl = host === "0.0.0.0" ? `http://127.0.0.1:${port}` : `http://${host}:${port}`;
-  console.log(`AtlasFit AI rodando em ${localUrl}`);
+  console.log(`TreinAI rodando em ${localUrl}`);
   console.log(process.env.OPENAI_API_KEY ? `IA real ativa com modelo ${model}` : "Sem OPENAI_API_KEY: usando demo local no navegador.");
 });

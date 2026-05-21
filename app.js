@@ -2,8 +2,9 @@ const state = {
   plan: null,
   activeClientId: 1,
   mode: "admin",
-  token: localStorage.getItem("atlasfit_token") || "",
+  token: localStorage.getItem("treinai_token") || "",
   user: null,
+  loginTarget: "admin",
   clients: [
     {
       id: 1,
@@ -132,18 +133,25 @@ async function api(path, options = {}) {
   return data;
 }
 
-async function loginDemo(role) {
-  const credentials = role === "student"
-    ? { email: "marina@atlasfit.ai", password: "aluno123" }
-    : { email: "admin@atlasfit.ai", password: "admin123" };
+async function loginWithCredentials(email, password) {
   const data = await api("/api/login", {
     method: "POST",
-    body: JSON.stringify(credentials)
+    body: JSON.stringify({ email, password })
   });
   state.token = data.token;
   state.user = data.user;
-  localStorage.setItem("atlasfit_token", data.token);
-  await loadSession(role);
+  localStorage.setItem("treinai_token", data.token);
+  await loadSession(data.user.role);
+}
+
+function showLogin(role) {
+  state.loginTarget = role;
+  $("#loginPanel").classList.remove("is-hidden");
+  $("#loginTitle").textContent = role === "student" ? "Entrar como aluno" : "Entrar como admin";
+  $("#loginHint").textContent = role === "student" ? "Acesse seus treinos e check-ins." : "Gerencie alunos, planos e dossies.";
+  $("#loginEmail").value = role === "student" ? "marina@treinai.app" : "admin@treinai.app";
+  $("#loginPassword").value = role === "student" ? "aluno123" : "admin123";
+  $("#loginEmail").focus();
 }
 
 async function loadSession(preferredMode = "admin") {
@@ -208,7 +216,7 @@ function enterApp(viewId = "planner", mode = "admin") {
 function exitApp() {
   state.token = "";
   state.user = null;
-  localStorage.removeItem("atlasfit_token");
+  localStorage.removeItem("treinai_token");
   $("#appShell")?.classList.add("is-hidden");
   $("#publicLanding")?.classList.remove("is-hidden");
   document.body.dataset.mode = "";
@@ -388,7 +396,7 @@ function renderReport() {
 
   $("#reportSheet").innerHTML = `
     <div class="report-header">
-      <span>AtlasFit AI</span>
+      <span>TreinAI</span>
       <strong>${profile.name}</strong>
       <p>${plan.title}</p>
     </div>
@@ -467,7 +475,7 @@ function reportText() {
   const plan = state.plan || buildPlan(getFormData());
   const profile = getFormData();
   return [
-    `ATLASFIT AI - DOSSIE DO ALUNO`,
+    `TREINAI - DOSSIE DO ALUNO`,
     "",
     `Aluno: ${profile.name}`,
     `Objetivo: ${profile.goal}`,
@@ -646,7 +654,7 @@ function exportPlan() {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = "plano-atlasfit-ai.txt";
+  link.download = "plano-treinai.txt";
   link.click();
   URL.revokeObjectURL(url);
 }
@@ -673,9 +681,17 @@ function init() {
 
   $$(".nav-item").forEach((button) => button.addEventListener("click", () => setView(button.dataset.view)));
 
-  $("#startAssessment")?.addEventListener("click", () => loginDemo("admin").then(() => setView("planner")).catch((error) => showToast(error.message)));
-  $("#openPanel")?.addEventListener("click", () => loginDemo("admin").catch((error) => showToast(error.message)));
-  $("#openStudent")?.addEventListener("click", () => loginDemo("student").catch((error) => showToast(error.message)));
+  $("#startAssessment")?.addEventListener("click", () => showLogin("admin"));
+  $("#openPanel")?.addEventListener("click", () => showLogin("admin"));
+  $("#openStudent")?.addEventListener("click", () => showLogin("student"));
+  $("#loginPanel")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    loginWithCredentials($("#loginEmail").value, $("#loginPassword").value)
+      .then(() => {
+        if (state.user?.role === "admin" && state.loginTarget === "admin") setView("planner");
+      })
+      .catch((error) => showToast(error.message));
+  });
   $("#backHome")?.addEventListener("click", exitApp);
   $("#studentCheckin")?.addEventListener("click", submitStudentCheckin);
 

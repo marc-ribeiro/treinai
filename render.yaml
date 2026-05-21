@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: atlasfit-ai
+    name: treinai
     runtime: node
     plan: free
     buildCommand: npm install
