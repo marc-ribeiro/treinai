@@ -146,11 +146,13 @@ async function loginWithCredentials(email, password) {
 
 function showLogin(role) {
   state.loginTarget = role;
+  $("#publicLanding")?.classList.add("login-open");
   $("#loginPanel").classList.remove("is-hidden");
   $("#loginTitle").textContent = role === "student" ? "Entrar como aluno" : "Entrar como admin";
   $("#loginHint").textContent = role === "student" ? "Acesse seus treinos e check-ins." : "Gerencie alunos, planos e dossies.";
   $("#loginEmail").value = role === "student" ? "marina@treinai.app" : "admin@treinai.app";
   $("#loginPassword").value = role === "student" ? "aluno123" : "admin123";
+  history.replaceState(null, "", role === "student" ? "#aluno" : "#admin");
   $("#loginEmail").focus();
 }
 
@@ -219,7 +221,10 @@ function exitApp() {
   localStorage.removeItem("treinai_token");
   $("#appShell")?.classList.add("is-hidden");
   $("#publicLanding")?.classList.remove("is-hidden");
+  $("#publicLanding")?.classList.remove("login-open");
+  $("#loginPanel")?.classList.add("is-hidden");
   document.body.dataset.mode = "";
+  history.replaceState(null, "", window.location.pathname);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -787,6 +792,12 @@ function init() {
     selectClient(Number(button.dataset.id), "delivery");
     showToast("Dossie do aluno aberto.");
   });
+
+  if (window.location.hash === "#aluno") {
+    showLogin("student");
+  } else if (window.location.hash === "#admin") {
+    showLogin("admin");
+  }
 
   lucide.createIcons();
 }

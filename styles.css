@@ -63,7 +63,8 @@ body[data-mode="student"] .sidebar {
 
 .public-landing {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background:
     linear-gradient(90deg, rgba(12, 20, 16, 0.88), rgba(12, 20, 16, 0.58), rgba(12, 20, 16, 0.18)),
     url("https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1800&q=82") center / cover;
@@ -73,9 +74,20 @@ body[data-mode="student"] .sidebar {
 .landing-overlay {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   min-height: 560px;
   padding: 16px clamp(16px, 4vw, 52px) 18px;
+}
+
+.public-landing.login-open .landing-overlay {
+  min-height: 100vh;
+  height: auto;
+}
+
+.public-landing.login-open .landing-content {
+  justify-content: flex-start;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
 .landing-nav {
@@ -273,20 +285,23 @@ body[data-mode="student"] .sidebar {
 .brand-logo::before {
   content: "";
   position: absolute;
-  inset: 9px 12px 8px;
-  clip-path: polygon(50% 0, 100% 100%, 73% 100%, 61% 70%, 38% 70%, 27% 100%, 0 100%);
+  top: 10px;
+  left: 9px;
+  right: 9px;
+  height: 8px;
+  border-radius: 999px;
   background: #f7fbf8;
 }
 
 .brand-logo::after {
   content: "";
   position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 8px;
-  height: 5px;
+  top: 10px;
+  left: 19px;
+  width: 8px;
+  height: 28px;
   border-radius: 999px;
-  background: var(--gold);
+  background: linear-gradient(180deg, #f7fbf8 0%, #1f7a4d 100%);
 }
 
 .brand-logo span {
